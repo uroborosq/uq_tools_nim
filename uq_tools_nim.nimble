@@ -5,8 +5,8 @@ author        = "UroborosQ"
 description   = "A new awesome nimble package"
 license       = "MIT"
 srcDir        = "src"
-bin           = @["uq_tools_nim"]
-
+bin           = @["ram", "cpu_usage"]
+binDir        = "bin"
 
 # Dependencies
 
