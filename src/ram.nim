@@ -1,7 +1,6 @@
 import strutils
 import std/strformat
 
-
 func bytes(line: string): uint = line.splitWhitespace[1].parseUint * 1024
 
 func toGB(bytes: uint): float = float(bytes) / 1024 / 1024 / 1024
