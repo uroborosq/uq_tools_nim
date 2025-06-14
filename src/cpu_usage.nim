@@ -3,6 +3,8 @@ proc readUsage(): string =
   echo content
   return content[0]
 
+
+
 when isMainModule:
   let c = readUsage()
   echo c
