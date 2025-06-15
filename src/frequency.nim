@@ -1,14 +1,13 @@
-import std/strformat
 import strutils
-import weave
+import std/[asyncdispatch, asyncfile, sequtils, strformat, cpuinfo]
 
-proc getFrequency(coreNumber: int): uint =
-  return readFile(fmt"/sys/devices/system/cpu/cpu{coreNumber}/cpufreq/scaling_cur_freq").parseUint()
-
+proc getFreq(coreNumber: int): Future[uint] {.async.} = 
+  var f = openAsync(fmt"/sys/devices/system/cpu/cpu{coreNumber}/cpufreq/scaling_cur_freq", fmRead)
+  let freq = await f.readAll()
+  f.close()
+  return freq.strip().parseUint() div 1000
 
 when isMainModule:
-  init(Weave)
-  for i in 0..10:
-    spawn getFrequency(i)
+  let freqs = waitFor toSeq(0..<countProcessors()).map(getFreq).all()
+  echo fmt"{freqs.max()}MHz"
 
-  exit(Weave)

@@ -12,4 +12,4 @@ binDir        = "bin"
 
 requires "nim >= 2.2.0"
 requires "cligen"
-requires "weave"
+requires "malebolgia"
