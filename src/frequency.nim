@@ -1,4 +1,14 @@
+import std/strformat
+import strutils
+import weave
+
+proc getFrequency(coreNumber: int): uint =
+  return readFile(fmt"/sys/devices/system/cpu/cpu{coreNumber}/cpufreq/scaling_cur_freq").parseUint()
+
 
 when isMainModule:
-  for i in items(10):
-    readFile("/sys/devices/system/cpu/cpu%d/cpufreq/scaling_cur_freq")  
+  init(Weave)
+  for i in 0..10:
+    spawn getFrequency(i)
+
+  exit(Weave)
