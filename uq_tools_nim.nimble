@@ -5,11 +5,11 @@ author        = "UroborosQ"
 description   = "A new awesome nimble package"
 license       = "MIT"
 srcDir        = "src"
-bin           = @["ram", "cpu_usage", "frequency"]
+bin           = @["ram", "cpu_usage", "frequency", "cpu_stress_test"]
 binDir        = "bin"
 
 # Dependencies
 
 requires "nim >= 2.2.0"
 requires "cligen"
-requires "malebolgia"
+requires "weave"
