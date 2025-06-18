@@ -1,20 +1,8 @@
-import std/strformat
-import std/cpuinfo
+import std/[strformat,cpuinfo]
 import strutils
-import weave
-
-proc getFrequency(coreNumber: int): uint =
-  return readFile(fmt"/sys/devices/system/cpu/cpu{coreNumber}/cpufreq/scaling_cur_freq").strip().parseUint() div 1000
+import sequtils
 
 when isMainModule:
-  init(Weave)
-  var max: uint = 0
-
-  parallelFor i in 0..<countProcessors():
-    let freq = getFrequency(i) 
-    if freq > max:
-      max = freq
-
+  let max = (0..<countProcessors()).toSeq().map(proc (i: int): uint = readFile(fmt"/sys/devices/system/cpu/cpu{i}/cpufreq/scaling_cur_freq").strip().parseUint() div 1000).max()
   echo fmt"{max}MHz"
 
-  exit(Weave)
