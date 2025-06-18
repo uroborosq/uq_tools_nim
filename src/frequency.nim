@@ -8,11 +8,13 @@ proc getFrequency(coreNumber: int): uint =
 
 when isMainModule:
   init(Weave)
-  var freqs = newSeq[uint](countProcessors())
+  var max: uint = 0
 
   parallelFor i in 0..<countProcessors():
-    echo getFrequency(i) 
+    let freq = getFrequency(i) 
+    if freq > max:
+      max = freq
 
-  echo fmt"{freqs.max()}MHz"
+  echo fmt"{max}MHz"
 
   exit(Weave)

@@ -12,5 +12,4 @@ when isMainModule:
   parallelFor i in 0..<countProcessors():
     spin(i)
 
-  syncRoot(Weave)
   exit(Weave)
