@@ -5,7 +5,7 @@ author        = "UroborosQ"
 description   = "A new awesome nimble package"
 license       = "MIT"
 srcDir        = "src"
-bin           = @["ram", "cpu_usage", "frequency", "cpu_stress_test"]
+bin           = @["ram", "cpu_usage", "frequency", "cpu_stress_test", "temperature"]
 binDir        = "bin"
 
 # Dependencies

@@ -1,8 +1,8 @@
 import weave
 import std/cpuinfo
 
-proc spin(i: int): void = 
-  var a = 0 
+proc spin(i: int): void =
+  var a = 0
   while true:
     a = a + 1
 
