@@ -15,7 +15,6 @@ func calculate(stats: seq[uint]): tuple[work: uint, total: uint] =
   return (work: work, total: stats[3..^1].foldl(a+b)+work)
 
 proc cpu_usage(repeat: repeatType): void =
-
   while true:
     let initial = readUsage().parseStatLine().calculate()
     sleep(1000)
