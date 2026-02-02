@@ -1,6 +1,6 @@
 import std/[strutils, strformat, sequtils, os]
-proc calculate(stat: seq[int]): tuple[total, work: int] = (total: stat.foldl(a+b), work: stat[0..2].foldl(a+b))
-proc parse(s: string): seq[int] = s.splitWhitespace()[1..^1].mapIt(it.parseInt())
+func calculate(stat: seq[int]): tuple[total, work: int] = (total: stat.foldl(a+b), work: stat[0..2].foldl(a+b))
+func parse(s: string): seq[int] = s.splitWhitespace()[1..^1].mapIt(it.parseInt())
 let first = open("/proc/stat").readLine().parse().calculate()
 sleep(1000)
 let second = open("/proc/stat").readLine().parse().calculate()
