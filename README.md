@@ -1,5 +1,12 @@
 ```mermaid
 block-beta
 
-gpuload ram cpufreq cpuload net
+gpuload ram cpufreq, cpl
+```
+
+```plantuml
+@startuml
+Alice -> Bob : hello
+@enduml
+
 ```

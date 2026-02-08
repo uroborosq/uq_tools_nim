@@ -14,9 +14,10 @@ proc getCounter(ifaces: seq[string]): tuple[received, sent: float] =
 
     counter
 
-let ifaces = commandLineParams()
+var ifaces =  commandLineParams()
+if ifaces.len() == 0: ifaces = @["enp", "wlp", "wlo"]
+
 let first = getCounter(ifaces)
 sleep(1000)
 let second = getCounter(ifaces)
 echo format(second.received - first.received)," ", format(second.sent - first.sent)
-

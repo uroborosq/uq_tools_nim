@@ -5,7 +5,7 @@ author        = "UroborosQ"
 description   = "uq tools in nim"
 license       = "MIT"
 srcDir        = "src"
-bin           = @["ram", "cpufreq", "cpuload", "gpuload", "net"]
+bin           = @["ram", "cpufreq", "cpuload", "gpuload", "net", "temperature"]
 binDir        = "bin"
 
 
