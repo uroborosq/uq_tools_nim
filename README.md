@@ -4,7 +4,7 @@ block-beta
 gpuload ram cpufreq, cpl
 ```
 
-```plantuml
+```puml
 @startuml
 Alice -> Bob : hello
 @enduml
