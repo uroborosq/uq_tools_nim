@@ -1,5 +1,5 @@
 import tables
-import std/[os, strformat]
+import os, strformat
 import sensors/sensors
 import nvidia/nvidia
 

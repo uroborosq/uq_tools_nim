@@ -1,4 +1,4 @@
-import std/[os, strutils, sequtils, strformat]
+import os, strutils, sequtils, strformat
 type Unit = enum `b/s`, `Kib/s`, `Mib/s`, `Gib/s`
 
 func format(value: float, counter = 0): string = (if value > 1024: format(value/1024, counter+1) else: &"{value:.1f} {Unit(counter)}")
