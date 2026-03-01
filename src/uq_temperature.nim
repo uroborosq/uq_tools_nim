@@ -18,6 +18,6 @@ of "topdesktop":
         parsedSensors["nvme"]["Sensor 2"].format(), " ",
         gpuTemp(), "°C"
 of "kvadra":
-    echo parsedSensors["coretemp"]["Package id 0"], " ", parsedSensors["nvme"]["Composite"]
+    echo parsedSensors["coretemp"]["Package id 0"].format(), " ", parsedSensors["nvme"]["Composite"].format()
 
 
