@@ -11,11 +11,10 @@ if args.len() != 1:
 
 for _ in 0..1000:
     info "starting waybar"
-    let p = startProcess("waybar", args = ["--config", args[0]], options = {poUsePath})
-    if p.waitForExit() != 0:
-        error "waybar failed", p.readLines()
-    else:
-        info "waybar finished"
+    discard startProcess("systemd-cat", args = ["-t", "waybar", "waybar", "--config", args[0]], options = {poUsePath}).waitForExit()
+
+    info "restarting waybar"
+
     sleep(1000)
 
 info "restart limit exceeded"
