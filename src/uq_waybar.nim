@@ -11,9 +11,9 @@ if args.len() != 1:
 
 for _ in 0..1000:
     info "starting waybar"
-    let p = startProcess("waybar", args = ["--config", args[0]], options = {poUsePath}).waitForExit()
-    if p != 0:
-        error "waybar failed"
+    let p = startProcess("waybar", args = ["--config", args[0]], options = {poUsePath})
+    if p.waitForExit() != 0:
+        error "waybar failed", p.readLines()
     else:
         info "waybar finished"
     sleep(1000)
