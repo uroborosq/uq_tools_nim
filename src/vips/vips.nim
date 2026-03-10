@@ -6,10 +6,10 @@ import std/[strutils]
 type
   VipsImage {.importc: "VipsImage", header: "<vips/vips.h>", incompleteStruct.} = object
 
-proc vips_init(argv0: cstring): cint
+proc vips_init*(argv0: cstring): cint
   {.importc, header: "<vips/vips.h>".}
 
-proc vips_shutdown()
+proc vips_shutdown*()
   {.importc, header: "<vips/vips.h>".}
 
 proc vips_image_new_from_file(name: cstring): ptr VipsImage
@@ -25,8 +25,7 @@ proc g_object_unref(obj: pointer)
   {.importc, header: "<glib-object.h>".}
 
 proc blur*(inputPath, outputPath: string, sigma: float) =
-  if vips_init("nim-vips") != 0:
-    quit("vips_init() failed")
+  echo inputPath, " ", outputPath
 
   let input = vips_image_new_from_file(inputPath.cstring, nil)
   if input.isNil:
@@ -37,16 +36,15 @@ proc blur*(inputPath, outputPath: string, sigma: float) =
 
   if vips_gaussblur(input, addr output, sigma.cdouble, nil) != 0:
     g_object_unref(input)
-    vips_shutdown()
     quit("vips_gaussblur() failed")
 
   if vips_image_write_to_file(output, outputPath.cstring, nil) != 0:
     g_object_unref(output)
     g_object_unref(input)
-    vips_shutdown()
     quit("vips_image_write_to_file() failed")
 
   g_object_unref(output)
   g_object_unref(input)
 
-  vips_shutdown()
+
+  echo "ok"
