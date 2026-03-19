@@ -29,7 +29,6 @@ proc blur*(inputPath, outputPath: string, sigma: float) =
 
   let input = vips_image_new_from_file(inputPath.cstring, nil)
   if input.isNil:
-    vips_shutdown()
     quit("cannot open input image: " & inputPath)
 
   var output: ptr VipsImage = nil
