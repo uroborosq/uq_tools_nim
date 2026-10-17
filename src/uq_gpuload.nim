@@ -1,2 +1,2 @@
-import nvidia/nvidia
+import amdgpu/amdgpu
 echo gpuLoad(), "%"
