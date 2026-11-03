@@ -1,5 +1,5 @@
 import tables
-import os, strformat
+import strformat
 import sensors/sensors
 import std/nativesockets
 

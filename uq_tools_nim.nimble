@@ -18,3 +18,7 @@ requires "nim >= 2.2.6"
 
 task lint, "Run lint":
   exec "nim check --styleCheck:error"
+
+task system, "Install binaries direct to /usr/bin/":
+  exec "nimble build"
+  exec "sudo mv bin/uq_* /usr/bin/"
